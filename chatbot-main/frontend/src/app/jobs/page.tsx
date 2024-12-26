@@ -57,7 +57,7 @@ const jobs = [
 
 export default function JobListings() {
   const [location, setLocation] = useState<string>('');
-  const [filteredJobs, setFilteredJobs] = useState(jobs);
+  const [filteredJobs, setFilteredJobs] = useState<any[]>([]);
 
   // Handle location input change
   const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,10 +66,14 @@ export default function JobListings() {
 
   // Handle form submission to filter jobs by location
   const handleSubmit = () => {
-    const filtered = jobs.filter(job => 
-      job.location.toLowerCase().includes(location.toLowerCase())
-    );
-    setFilteredJobs(filtered);
+    if (location.trim() === "") {
+      setFilteredJobs([]); // If no location, don't show any jobs
+    } else {
+      const filtered = jobs.filter(job => 
+        job.location.toLowerCase().includes(location.toLowerCase())
+      );
+      setFilteredJobs(filtered);
+    }
   };
 
   return (
@@ -87,23 +91,26 @@ export default function JobListings() {
         <Button onClick={handleSubmit} className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md">Search</Button>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {filteredJobs.map((job) => (
-          <Card key={job.id} className="bg-purple-800 text-white border-gray-700 shadow-lg transform transition duration-500 hover:scale-105">
-            <CardHeader>
-              <CardTitle className="text-2xl font-semibold">{job.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-yellow-400 text-lg">{job.company}</p>
-              <p className="text-green-400 text-lg">{job.location}</p>
-              {job.salary && <p className="text-gray-400 text-lg">{job.salary}</p>}
-            </CardContent>
-            <CardFooter>
-              <Button className="w-full bg-pink-600 hover:bg-pink-700 text-lg py-2">Apply Now</Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+      {/* Display job cards only after submitting */}
+      {filteredJobs.length > 0 && (
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {filteredJobs.map((job) => (
+            <Card key={job.id} className="bg-purple-800 text-white border-gray-700 shadow-lg transform transition duration-500 hover:scale-105">
+              <CardHeader>
+                <CardTitle className="text-2xl font-semibold">{job.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-yellow-400 text-lg">{job.company}</p>
+                <p className="text-green-400 text-lg">{job.location}</p>
+                {job.salary && <p className="text-gray-400 text-lg">{job.salary}</p>}
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full bg-pink-600 hover:bg-pink-700 text-lg py-2">Apply Now</Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

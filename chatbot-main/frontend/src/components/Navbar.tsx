@@ -40,7 +40,7 @@ export function Navbar() {
               </Link>
             ))}
 
-            {/* Add Generate Resume Button */}
+            {/* Generate Resume Button */}
             <Link href="/generate-resume">
               <Button 
                 variant="outline" 
@@ -50,6 +50,7 @@ export function Navbar() {
               </Button>
             </Link>
 
+            {/* ATS Score Button */}
             <Link href="/ats-score">
               <Button 
                 variant="outline" 
@@ -59,13 +60,23 @@ export function Navbar() {
               </Button>
             </Link>
 
-            {/* Add Questions Button */}
+            {/* Questions Button */}
             <Link href="/questions">
               <Button 
                 variant="outline" 
                 className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white transition-colors duration-200"
               >
                 Questions
+              </Button>
+            </Link>
+
+            {/* Audio Recorder Button */}
+            <Link href="/audio-recorder">
+              <Button 
+                variant="outline" 
+                className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white transition-colors duration-200"
+              >
+                Audio Recorder
               </Button>
             </Link>
           </div>
@@ -99,7 +110,7 @@ export function Navbar() {
               </Link>
             ))}
 
-            {/* Add Generate Resume Button */}
+            {/* Generate Resume Button */}
             <Link href="/generate-resume">
               <Button 
                 variant="outline" 
@@ -109,6 +120,7 @@ export function Navbar() {
               </Button>
             </Link>
 
+            {/* ATS Score Button */}
             <Link href="/ats-score">
               <Button 
                 variant="outline" 
@@ -118,13 +130,23 @@ export function Navbar() {
               </Button>
             </Link>
 
-            {/* Add Questions Button */}
+            {/* Questions Button */}
             <Link href="/questions">
               <Button 
                 variant="outline" 
                 className="w-full mt-4 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white transition-colors duration-200"
               >
                 Questions
+              </Button>
+            </Link>
+
+            {/* Audio Recorder Button */}
+            <Link href="/audio-recorder">
+              <Button 
+                variant="outline" 
+                className="w-full mt-4 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white transition-colors duration-200"
+              >
+                Audio Recorder
               </Button>
             </Link>
           </div>
